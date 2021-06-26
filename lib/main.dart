@@ -1,4 +1,7 @@
+// @dart=2.9 
 import 'package:flutter/material.dart';
+
+import 'package:flutter_movie_app/src/pages/home_page.dart';
  
 void main() => runApp(MyApp());
  
@@ -6,20 +9,15 @@ class MyApp extends StatelessWidget {
    @override
    Widget build(BuildContext context) {
       return MaterialApp(
+         debugShowCheckedModeBanner: false,
          theme: ThemeData(
             primaryColor: Colors.pink
          ),
-         title: 'Material App',
-         home: Scaffold(
-            appBar: AppBar(
-            title: Text('APP'),
-         ),
-         body: Center(
-            child: Container(
-            child: Text('Hello World'),
-         ),
-        ),
-      ),
+         title: 'Movie app',
+         initialRoute: '/',
+         routes: {
+            '/': (BuildContext context) => HomePage(),
+         },
    );
   }
 }
