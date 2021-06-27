@@ -9,7 +9,7 @@ class Movies{
       for(var item in jsonList){
          final movie = new Movie.fromJsonMap(item);
          items.add(movie);
-      }      
+      }
 
    }
 
@@ -20,7 +20,7 @@ class Movie {
    String? backdropPath;
    List<int>? genreIds;
    int? id;
-   OriginalLanguage? originalLanguage;
+   String? originalLanguage;
    String? originalTitle;
    String? overview;
    double? popularity;
@@ -64,6 +64,12 @@ class Movie {
       voteAverage       = json['vote_average'] / 1;
       voteCount         = json['vote_count'];
    }
-}
 
-enum OriginalLanguage { EN, JA, ES }
+   String getImg(){
+      if(posterPath == null ){
+         return 'https://i.stack.imgur.com/y9DpT.jpg';
+      } else {
+         return 'https://image.tmdb.org/t/p/w500$posterPath';
+      }
+   }
+}

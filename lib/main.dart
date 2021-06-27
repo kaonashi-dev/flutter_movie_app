@@ -1,4 +1,3 @@
-// @dart=2.9 
 import 'package:flutter/material.dart';
 
 import 'package:flutter_movie_app/src/pages/home_page.dart';
