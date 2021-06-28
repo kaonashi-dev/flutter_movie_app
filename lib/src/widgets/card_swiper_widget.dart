@@ -31,7 +31,7 @@ class CardSwiper extends StatelessWidget {
             itemCount: this.movies.length,
             layout: SwiperLayout.STACK,
             itemWidth: _screnSize.width * 0.7,
-            itemHeight: _screnSize.width * 0.9,
+            itemHeight: _screnSize.height * 0.5,
             // pagination: new SwiperPagination(),
             // control: new SwiperControl(),
          ),
