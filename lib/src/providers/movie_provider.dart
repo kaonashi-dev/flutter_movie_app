@@ -14,13 +14,13 @@ class MovieProvider{
    int _popularPage = 0;
 
    List<Movie> _popular = [];
-   final _popularStream = StreamController<List<Movie>>.broadcast();
+   final _popularStreamController = StreamController<List<Movie>>.broadcast();
 
-   Function(List<Movie>) get popularSink => _popularStream.sink.add;
-   Stream<List<Movie>> get popularStream => _popularStream.stream;
+   Function(List<Movie>) get popularSink => _popularStreamController.sink.add;
+   Stream<List<Movie>> get popularStream => _popularStreamController.stream;
 
    void disposeStream(){
-      _popularStream.close();
+      _popularStreamController.close();
    }
 
    Future<List<Movie>> _respose(Uri url) async{
@@ -54,7 +54,13 @@ class MovieProvider{
          'page': _popularPage.toString()
       });
 
-      return await _respose(url);
+      final res = await _respose(url);
+
+      _popular.addAll(res);
+      popularSink(_popular);
+
+      return res;
+
    }
 
 }

@@ -57,6 +57,9 @@ class HomePage extends StatelessWidget {
 
    Widget _footer(BuildContext context){
 
+      movieProvider.getPopular();
+      final _screnSize = MediaQuery.of(context).size;
+
       return Container(
          width: double.infinity,
          child: Column(
@@ -64,16 +67,15 @@ class HomePage extends StatelessWidget {
                
                Text('Populares', style: Theme.of(context).textTheme.headline6),
 
-               FutureBuilder(
-                  future: movieProvider.getPopular(),
+               StreamBuilder(
+                  stream: movieProvider.popularStream,
                   builder: (BuildContext context, AsyncSnapshot<List<Movie>> snapshot){
 
                      if (snapshot.hasData) {
-                        print('holi :)');
-                        return HorizontalCard(movies: snapshot.data!);
+                        return HorizontalCard(movies: snapshot.data!, nextPage: movieProvider.getPopular);
                      } else {
                         return Container(
-                           height: 500,
+                           height: _screnSize.height * 0.1,
                            child: Center(
                               child: CircularProgressIndicator()
                            )

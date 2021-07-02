@@ -4,22 +4,33 @@ import 'package:flutter_movie_app/src/models/movie_model.dart';
 class HorizontalCard extends StatelessWidget {
 
    final List<Movie> movies;
+   final Function nextPage;
 
-   HorizontalCard({ required this.movies});
+   HorizontalCard({ required this.movies, required this.nextPage});
+
+   final _pageController = new PageController(
+      initialPage: 1,
+      viewportFraction: 0.3,
+   );
 
    @override
    Widget build(BuildContext context) {
 
       final _screnSize = MediaQuery.of(context).size;
+
+      _pageController.addListener(() {
+         
+         if( _pageController.position.pixels >= _pageController.position.maxScrollExtent - 300 ){
+            nextPage();
+         }
+
+      });
       
       return Container(
          height: _screnSize.height * 0.2,
          child: PageView(
             pageSnapping: false,
-            controller: PageController(
-               initialPage: 1,
-               viewportFraction: 0.3
-            ),
+            controller: _pageController,
             children: _cards(),
          ),
       );
