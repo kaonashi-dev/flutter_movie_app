@@ -13,6 +13,8 @@ class MovieProvider{
 
    int _popularPage = 0;
 
+   bool _loading = false;
+
    List<Movie> _popular = [];
    final _popularStreamController = StreamController<List<Movie>>.broadcast();
 
@@ -46,6 +48,9 @@ class MovieProvider{
 
    Future<List<Movie>> getPopular() async{
 
+      if(_loading) return [];
+
+      _loading = true;
       _popularPage++;
 
       final url = Uri.https(_url, '/3/movie/popular', {
@@ -58,6 +63,8 @@ class MovieProvider{
 
       _popular.addAll(res);
       popularSink(_popular);
+
+      _loading = false;
 
       return res;
 

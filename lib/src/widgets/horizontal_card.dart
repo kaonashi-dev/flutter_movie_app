@@ -28,13 +28,47 @@ class HorizontalCard extends StatelessWidget {
       
       return Container(
          height: _screnSize.height * 0.2,
-         child: PageView(
+         child: PageView.builder(
             pageSnapping: false,
             controller: _pageController,
-            children: _cards(),
+            // children: _cards(),
+            itemCount: movies.length,
+            itemBuilder: (context, i){
+              return _card(context, movies[i]); 
+            },
          ),
       );
    
+   }
+
+   Widget _card(BuildContext context, Movie movie){
+      final card = Container(
+            margin: EdgeInsets.only(right: 13.0),   
+            child: Column(
+               children: [
+                  ClipRRect(
+                     borderRadius: BorderRadius.circular(11.0),
+                     child: FadeInImage(
+                       placeholder: AssetImage('assets/no-image.jpg'), 
+                       image: NetworkImage(movie.getImg()),
+                       height: 111.1,
+                       fit: BoxFit.cover,
+                    ),
+                  ),
+                  Text(
+                     movie.title.toString(),
+                     overflow: TextOverflow.ellipsis,
+                  )
+               ],
+            ),
+         );
+      
+      return GestureDetector(
+         child: card,
+         onTap: () {
+            Navigator.pushNamed(context, 'details', arguments: movie);
+         },
+      );
    }
 
    List<Widget> _cards(){
