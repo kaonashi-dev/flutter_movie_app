@@ -71,34 +71,34 @@ class HorizontalCard extends StatelessWidget {
       );
    }
 
-   List<Widget> _cards(){
+   // List<Widget> _cards(){
 
-      return movies.map((movie) {
+   //    return movies.map((movie) {
 
-         return Container(
-            margin: EdgeInsets.only(right: 13.0),   
-            child: Column(
-               children: [
-                  ClipRRect(
-                     borderRadius: BorderRadius.circular(11.0),
-                     child: FadeInImage(
-                       placeholder: AssetImage('assets/no-image.jpg'), 
-                       image: NetworkImage(movie.getImg()),
-                       height: 111.1,
-                       fit: BoxFit.cover,
-                    ),
-                  ),
-                  Text(
-                     movie.title.toString(),
-                     overflow: TextOverflow.ellipsis,
-                  )
-               ],
-            ),
+   //       return Container(
+   //          margin: EdgeInsets.only(right: 13.0),   
+   //          child: Column(
+   //             children: [
+   //                ClipRRect(
+   //                   borderRadius: BorderRadius.circular(11.0),
+   //                   child: FadeInImage(
+   //                     placeholder: AssetImage('assets/no-image.jpg'), 
+   //                     image: NetworkImage(movie.getImg()),
+   //                     height: 111.1,
+   //                     fit: BoxFit.cover,
+   //                  ),
+   //                ),
+   //                Text(
+   //                   movie.title.toString(),
+   //                   overflow: TextOverflow.ellipsis,
+   //                )
+   //             ],
+   //          ),
          
-         );
+   //       );
 
-      }).toList();
+   //    }).toList();
 
-   }
+   // }
 
 }

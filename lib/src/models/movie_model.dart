@@ -72,4 +72,12 @@ class Movie {
          return 'https://image.tmdb.org/t/p/w500$posterPath';
       }
    }
+
+   String getBackgroundImg(){
+      if(posterPath == null ){
+         return 'https://i.stack.imgur.com/y9DpT.jpg';
+      } else {
+         return 'https://image.tmdb.org/t/p/w500$backdropPath';
+      }
+   }
 }
