@@ -27,7 +27,7 @@ class HorizontalCard extends StatelessWidget {
       });
       
       return Container(
-         height: _screnSize.height * 0.2,
+         height: _screnSize.height * 0.17,
          child: PageView.builder(
             pageSnapping: false,
             controller: _pageController,
@@ -57,6 +57,8 @@ class HorizontalCard extends StatelessWidget {
                   ),
                   Text(
                      movie.title.toString(),
+                     textAlign: TextAlign.center,
+                     maxLines: 2,
                      overflow: TextOverflow.ellipsis,
                   )
                ],
@@ -70,35 +72,5 @@ class HorizontalCard extends StatelessWidget {
          },
       );
    }
-
-   // List<Widget> _cards(){
-
-   //    return movies.map((movie) {
-
-   //       return Container(
-   //          margin: EdgeInsets.only(right: 13.0),   
-   //          child: Column(
-   //             children: [
-   //                ClipRRect(
-   //                   borderRadius: BorderRadius.circular(11.0),
-   //                   child: FadeInImage(
-   //                     placeholder: AssetImage('assets/no-image.jpg'), 
-   //                     image: NetworkImage(movie.getImg()),
-   //                     height: 111.1,
-   //                     fit: BoxFit.cover,
-   //                  ),
-   //                ),
-   //                Text(
-   //                   movie.title.toString(),
-   //                   overflow: TextOverflow.ellipsis,
-   //                )
-   //             ],
-   //          ),
-         
-   //       );
-
-   //    }).toList();
-
-   // }
 
 }

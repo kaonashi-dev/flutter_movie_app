@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_movie_app/src/models/movie_model.dart';
 
-class DetailsPage extends StatelessWidget {
+class DetailsScreen extends StatelessWidget {
 
    
    @override
@@ -18,7 +18,9 @@ class DetailsPage extends StatelessWidget {
                   delegate: SliverChildListDelegate(
                      [
                         SizedBox(height: 11.0),
-                        _title(movie, context)
+                        _title(movie, context),
+                        SizedBox(height: 9),
+                        _Overview(movie),
                      ]
                   )
                )
@@ -33,7 +35,7 @@ class DetailsPage extends StatelessWidget {
          automaticallyImplyLeading: false,
          elevation: 19.9,
          backgroundColor: Colors.pink,
-         expandedHeight: 300.0,
+         expandedHeight: 500.0,
          floating: false,
          pinned: true,
          flexibleSpace: FlexibleSpaceBar(
@@ -57,8 +59,9 @@ class DetailsPage extends StatelessWidget {
       final TextTheme textTheme = Theme.of(context).textTheme;
       final size = MediaQuery.of(context).size;
 
-      return ConstrainedBox(
+      return Container(
          constraints: BoxConstraints(maxWidth: size.width - 100),
+         padding: EdgeInsets.symmetric(horizontal: 19),
          child: Row(
             children: [
                ClipRRect(
@@ -85,5 +88,22 @@ class DetailsPage extends StatelessWidget {
          ),
       );
 
+   }
+}
+
+class _Overview extends StatelessWidget {
+
+   final Movie _movie;
+   _Overview(this._movie);
+   
+   @override
+   Widget build(BuildContext context) {
+      return Container(
+         padding: EdgeInsets.symmetric(horizontal: 19),
+         child: Text(
+            _movie.overview.toString(),
+            textAlign: TextAlign.justify,
+         ),
+      );
    }
 }

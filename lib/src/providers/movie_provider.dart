@@ -21,6 +21,10 @@ class MovieProvider{
    Function(List<Movie>) get popularSink => _popularStreamController.sink.add;
    Stream<List<Movie>> get popularStream => _popularStreamController.stream;
 
+   MovieProvider(){
+      print('movie prvider');
+   }
+
    void disposeStream(){
       _popularStreamController.close();
    }

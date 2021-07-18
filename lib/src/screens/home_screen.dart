@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_movie_app/src/providers/movie_provider.dart';
-import 'package:flutter_movie_app/src/widgets/card_swiper_widget.dart';
 
 import 'package:flutter_movie_app/src/models/movie_model.dart';
-import 'package:flutter_movie_app/src/widgets/horizontal_card.dart';
+import 'package:flutter_movie_app/src/widgets/widgets.dart';
 
-class HomePage extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
 
    final movieProvider = new MovieProvider();
    
@@ -22,13 +21,16 @@ class HomePage extends StatelessWidget {
                )
             ],
          ),
-         body: Container(
-            child: Column(
-               mainAxisAlignment: MainAxisAlignment.spaceAround,
-               children: <Widget>[
-                  _swiperCard(),
-                  _footer(context),
-               ],
+         body: SingleChildScrollView(
+            child: Container(
+               child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                     _swiperCard(),
+                     _footer(context),
+                     _footer(context),
+                  ],
+               ),
             ),
          ),
       );

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_app/src/pages/details_page.dart';
+import 'package:flutter_movie_app/src/screens/screens.dart';
 
-import 'package:flutter_movie_app/src/pages/home_page.dart';
- 
 void main() => runApp(MyApp());
  
 class MyApp extends StatelessWidget {
@@ -10,15 +8,20 @@ class MyApp extends StatelessWidget {
    Widget build(BuildContext context) {
       return MaterialApp(
          debugShowCheckedModeBanner: false,
-         theme: ThemeData.light().copyWith(
-            primaryColor: Colors.pink
-         ),
-         title: 'Movie app',
+         title: 'PELÌCULAS',
          initialRoute: '/',
          routes: {
-            '/': (BuildContext context) => HomePage(),
-            'details': (BuildContext context) => DetailsPage(),
+            '/':        (BuildContext context) => HomeScreen(),
+            'details':  (BuildContext context) => DetailsScreen(),
          },
+         theme: ThemeData.light().copyWith(
+            primaryColor: Colors.pink,
+            appBarTheme: AppBarTheme(
+               color: Colors.pinkAccent,
+               elevation: 0,
+               centerTitle: true,
+            )
+         ),
    );
   }
 }
